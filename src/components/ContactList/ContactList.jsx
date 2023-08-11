@@ -7,9 +7,8 @@ import Contact from "components/Contact/Contact";
 const ContactList = () => {
 
   const contacts = useSelector(getContacts);
-  // console.log(contacts);
   const filter = useSelector(getFilter);
-  // console.log(filter);
+  
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );

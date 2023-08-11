@@ -1,36 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { nanoid } from 'nanoid';
-import {
-  fetchContacts,
-  addContact,
-  deleteContact,
-  // filterContact,
-} from './operations';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
-export const contactSlice = createSlice({
+const contactSlice = createSlice({
   name: 'contacts',
   initialState: {
     contacts: {
-      items: [
-        {
-          name: 'qweJasmine McLaughlin',
-          phone: '779-542-8962',
-          id: '888',
-        },
-        {
-          name: 'qweRuth Zulauf',
-          phone: '913-225-9886',
-          id: '988',
-        },
-      ],
+      items: [],
       isLoading: false,
       error: null,
-    },
-    filter: '',
-  },
-  reducers: {
-    filterContact(state, action) {
-      state.filter = action.payload;
     },
   },
   extraReducers: {
@@ -73,19 +50,7 @@ export const contactSlice = createSlice({
       state.contacts.isLoading = false;
       state.contacts.error = action.payload;
     },
-    // [filterContact.pending](state) {
-    //   state.contacts.isLoading = true;
-    // },
-    // [filterContact.fulfilled](state, action) {
-    //   state.contacts.isLoading = false;
-    //   state.contacts.error = null;
-    //   state.filter = action.payload;
-    // },
-    // [filterContact.rejected](state, action) {
-    //   state.contacts.isLoading = false;
-    //   state.contacts.error = action.payload;
-    // },
   },
 });
 
-export const { filterContact } = contactSlice.actions;
+export const contactReducer = contactSlice.reducer;
