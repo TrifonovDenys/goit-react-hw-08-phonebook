@@ -1,4 +1,7 @@
 @import-normalize;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
