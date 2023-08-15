@@ -1,5 +1,6 @@
 import { NavLink, Link, Outlet } from "react-router-dom"
 import { MdContacts } from 'react-icons/md';
+import { FcContacts } from 'react-icons/fc';
 
 const Navigation = () => {
   return (
@@ -7,7 +8,8 @@ const Navigation = () => {
       <div class="flex items-center max-w-5xl mx-auto my-0">
         <div class="flex lg:flex-1">
       <NavLink to="/" class="-m-1.5 p-1.5">
-            <MdContacts/>
+            {/* <MdContacts /> */}
+            <FcContacts/>
       </NavLink>
     </div>
       <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
