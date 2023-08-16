@@ -1,7 +1,24 @@
+import { register } from "redux/auth/operations"
+import { useDispatch } from "react-redux"
+
 const RegistrationForm = () => {
+  const dispatch = useDispatch()
+    const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    dispatch(
+      register({
+        name: form.elements.name.value,
+        email: form.elements.email.value,
+        password: form.elements.password.value,
+      })
+    );
+    form.reset();
+  };
+
   return (
     <>
-      <form className="space-y-6" action="#" method="POST">
+      <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
         
             <div>
               <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
@@ -11,7 +28,7 @@ const RegistrationForm = () => {
                 <input
                   id="name"
                   name="name"
-                  type="name"
+                  type="text"
                   autoComplete="name"
                   required
                   className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
