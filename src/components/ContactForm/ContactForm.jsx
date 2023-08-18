@@ -26,7 +26,7 @@ const ContactForm = () => {
         theme: "dark",
         });
     }
-    dispatch(addContact({name:form.elements.name.value, phone:form.elements.number.value}))
+    dispatch(addContact({name:form.elements.name.value, number:form.elements.number.value}))
     form.reset()
       toast('contact added', {
         position: "top-right",

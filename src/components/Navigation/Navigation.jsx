@@ -1,8 +1,11 @@
 import { NavLink, Link, Outlet } from "react-router-dom"
 import { MdContacts } from 'react-icons/md';
 import { FcContacts } from 'react-icons/fc';
+import { useAuth } from "hooks";
 
 const Navigation = () => {
+
+  const { isLoggedIn} = useAuth()
   return (
     <>
       <div class="flex items-center max-w-5xl mx-auto my-0">
@@ -25,10 +28,12 @@ const Navigation = () => {
       
       <NavLink style={({ isActive }) => ({
           color: isActive ? 'rgb(79, 70, 229)' : 'black' ,
-      })}  to="/" className="text-sm font-semibold leading-6 text-gray-900">Home</NavLink>
-      <NavLink style={({ isActive }) => ({
+            })} to="/" className="text-sm font-semibold leading-6 text-gray-900">Home</NavLink>
+            
+            {isLoggedIn && <NavLink style={({ isActive }) => ({
           color: isActive ? 'rgb(79, 70, 229)' : 'black',
-      })} to="/contacts" className="text-sm font-semibold leading-6 text-gray-900">Contacts</NavLink>
+      })} to="/contacts" className="text-sm font-semibold leading-6 text-gray-900">Contacts</NavLink>}
+      
           
     </div>
         
