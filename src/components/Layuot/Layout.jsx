@@ -1,17 +1,18 @@
-import {Outlet } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import AppBar from "components/AppBar/AppBar"
+import { Suspense } from 'react';
 
 const Layout = () => {
   return (
  <>
-    <header class="bg-white">
+    <header className="bg-white">
       <AppBar/>
     </header>
 
-    <main >
-        {/* <Suspense fallback={<div>loading...</div>}> */}
+    <main className="max-w-5xl mx-auto my-0">
+        <Suspense fallback={<div>loading...</div>}>
           <Outlet/>
-        {/* </Suspense> */}
+        </Suspense>
     </main>
  </>
   )

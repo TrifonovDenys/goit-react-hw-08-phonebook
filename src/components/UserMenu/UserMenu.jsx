@@ -7,13 +7,12 @@ const UserMenu = () => {
   const dispatch = useDispatch()
 
   const handleLogOut = () => dispatch(logOut())
+  
   return (
-    <>
-      <div>
-        <p>Welcom {user.name}</p>
+    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+      <p>Welcom {user.name}</p>
       <button type="button" onClick={handleLogOut}>LogOut</button>
-      </div>
-    </>
+    </div>
   )
 }
 

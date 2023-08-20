@@ -9,6 +9,9 @@ module.exports = {
       textColor: {
         'red-border': '#ff0000',
       },
+      height: {
+        'screen': '80vh',
+      }
     },
   },
   variants: {},
