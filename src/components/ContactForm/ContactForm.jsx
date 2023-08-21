@@ -31,7 +31,7 @@ const ContactForm = () => {
     <>
       <ToastContainer toastStyle={{ fontSize: 20, backgroundColor: 'rgb(79, 70, 229)' }} />
       {/* <form className={css.form} onSubmit={handleSubmit}> */}
-        <form className="space-y-6 " onSubmit={handleSubmit}>
+        <form className="space-y-6 max-w-lg mx-auto my-0" onSubmit={handleSubmit}>
         <div>
           <label
             htmlFor="name"

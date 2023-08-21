@@ -9,9 +9,9 @@ const UserMenu = () => {
   const handleLogOut = () => dispatch(logOut())
   
   return (
-    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-      <p>Welcom {user.name}</p>
-      <button type="button" onClick={handleLogOut}>LogOut</button>
+    <div className="hidden lg:flex lg:flex-1 lg:justify-end ">
+      <p className="text-sm font-semibold text-gray-900">Welcom {user.name}</p>
+      <button type="button" onClick={handleLogOut} className="text-sm font-semibold text-gray-900 ml-0.5">LogOut <span aria-hidden="true">&rarr;</span></button>
     </div>
   )
 }
