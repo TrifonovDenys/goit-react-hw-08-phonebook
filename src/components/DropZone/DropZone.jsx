@@ -36,11 +36,14 @@ const Container = styled.div`
 function DropZone(props) {
   const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
   
-  const files = acceptedFiles.map(file => (
+  const files = acceptedFiles.map(file => {
+    console.log(file);
+    (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
-  ));
+    
+  )});
 
   return (
     <section className="container">

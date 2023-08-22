@@ -7,22 +7,18 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   
   const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
     dispatch(
-      logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
+      logIn(e)
     );
-    form.reset();
   };
 
   return (
-    <Formik>
+    <Formik
+      initialValues={{ email: '', password: '' }}
+      onSubmit={handleSubmit}>
+      
       <Form
         className="space-y-6"
-        onSubmit={handleSubmit}
       >
         <div>
           <label

@@ -12,19 +12,14 @@ const ContactForm = () => {
   const contacts = useSelector(getContacts);
 
   const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
-    if (contacts.some(({ name }) => name === form.elements.name.value)) {
-      form.reset();
+    if (contacts.some(({ name }) => name === e.name)) {
+      // form.reset();
       return toast('contact alredy added', option);
     }
     dispatch(
-      addContact({
-        name: form.elements.name.value,
-        number: form.elements.number.value,
-      })
+      addContact(e)
     );
-    form.reset();
+    // form.reset();
     toast('contact added', option);
   };
 
@@ -33,8 +28,9 @@ const ContactForm = () => {
       <ToastContainer toastStyle={{ fontSize: 20, backgroundColor: 'rgb(79, 70, 229)' }} />
       {/* <form className={css.form} onSubmit={handleSubmit}> */}
 
-      <Formik>
-        <Form className="flex items-end max-w-lg gap-x-3 py-6" onSubmit={handleSubmit}>
+      <Formik
+      initialValues={{ name: '', number: '' }} onSubmit={handleSubmit}>
+        <Form className="flex items-end max-w-lg gap-x-3 py-6">
         <div>
           <label
             htmlFor="name"

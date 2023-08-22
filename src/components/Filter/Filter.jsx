@@ -23,7 +23,8 @@ const Filter = () => {
   };
 
   return (
-    <Formik>
+    <Formik
+    initialValues={{ email: '', password: '' }}>
       <Form className="w-1/2">
         <div className="relative">
           <label className="" htmlFor="filter">
@@ -37,7 +38,7 @@ const Filter = () => {
             onChange={handleFilter}
           />
           <div
-            className="hidden absolute right-1 top-1/2 cursor-pointer"
+            className="hidden absolute right-1 top-[10%] cursor-pointer"
             onClick={clearFilter}
           >
             <RxCross2 />

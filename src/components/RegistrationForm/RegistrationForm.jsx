@@ -4,27 +4,19 @@ import { Formik, Field, Form } from 'formik';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+
   const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
     dispatch(
-      register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
+      register(e)
     );
-    form.reset();
   };
   // testuser123456789
   return (
-    <Formik>
+    <Formik
+      initialValues={{name: "", email: '', password: '' }}
+      onSubmit={handleSubmit}>
       <Form
-        className="space-y-6"
-        action="#"
-        method="POST"
-        onSubmit={handleSubmit}
-      >
+        className="space-y-6">
         <div>
           <label
             htmlFor="name"
@@ -72,9 +64,6 @@ const RegistrationForm = () => {
               Password
             </label>
             <div className="text-sm">
-              {/* <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Forgot password?
-                  </a> */}
             </div>
           </div>
           <div className="mt-2">
