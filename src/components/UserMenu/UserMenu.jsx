@@ -10,7 +10,7 @@ const UserMenu = () => {
   
   return (
     <div className="hidden lg:flex lg:flex-1 lg:justify-end ">
-      <p className="text-sm font-semibold text-gray-900">Welcom {user.name}</p>
+      <p className="text-sm font-semibold text-gray-900 mx-1">{user.name}</p>
       <button type="button" onClick={handleLogOut} className="text-sm font-semibold text-gray-900 ml-0.5">LogOut <span aria-hidden="true">&rarr;</span></button>
     </div>
   )

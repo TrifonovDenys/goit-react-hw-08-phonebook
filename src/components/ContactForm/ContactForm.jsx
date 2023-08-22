@@ -5,6 +5,7 @@ import { getContacts } from 'redux/contacts/selectors';
 import { option } from 'aditionJs/toastOption';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Formik, Field, Form } from 'formik';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -31,20 +32,22 @@ const ContactForm = () => {
     <>
       <ToastContainer toastStyle={{ fontSize: 20, backgroundColor: 'rgb(79, 70, 229)' }} />
       {/* <form className={css.form} onSubmit={handleSubmit}> */}
-        <form className="space-y-6 max-w-lg mx-auto my-0" onSubmit={handleSubmit}>
+
+      <Formik>
+        <Form className="flex items-end max-w-lg gap-x-3 py-6" onSubmit={handleSubmit}>
         <div>
           <label
             htmlFor="name"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
-            Name
           </label>
           <div className="mt-2">
-            <input
+            <Field
               id="name"
               name="name"
               type="text"
-              autoComplete="name"
+                autoComplete="name"
+                placeholder="Name"
               required
               className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
@@ -56,14 +59,15 @@ const ContactForm = () => {
             htmlFor="number"
             className="block text-sm font-medium leading-6 text-gray-900"
           >
-            Number
+
           </label>
           <div className="mt-2">
-            <input
+            <Field
               id="number"
               name="number"
               type='number'
-              autoComplete="number"
+                autoComplete="number"
+                placeholder="Number"
               required
               className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
@@ -73,12 +77,13 @@ const ContactForm = () => {
         <div>
           <button
             type="submit"
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="flex w-full justify-center rounded-md bg-indigo-600 px-5 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Add contact
           </button>
         </div>
-      </form>
+        </Form>
+        </Formik>
     </>
   );
 };
