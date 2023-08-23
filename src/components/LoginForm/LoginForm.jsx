@@ -1,65 +1,59 @@
 import { logIn } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as yup from 'yup'
+
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(6).max(20).required(), 
+})
 
 const LoginForm = () => {
 
   const dispatch = useDispatch();
   
-  const handleSubmit = e => {
+  const handleSubmit = (v,a) => {
     dispatch(
-      logIn(e)
+      logIn(v)
     );
+    // a.resetForm()
   };
 
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+      validationSchema={schema}
+    >
       
       <Form
         className="space-y-6"
       >
         <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium leading-6 text-gray-900"
-          >
-            Email address
-          </label>
+          <ErrorMessage name="email">
+            {errorMsg => <div className="text-red-600">{errorMsg}</div>}
+          </ErrorMessage>
           <div className="mt-2">
             <Field
-              id="email"
               name="email"
               type="email"
               autoComplete="email"
-              required
+              placeholder="Email address"
               className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
 
         <div>
-          <div className="flex items-center justify-between">
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Password
-            </label>
-            <div className="text-sm">
-              {/* <a href="#" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                    Forgot password?
-                  </a> */}
-            </div>
-          </div>
+            <ErrorMessage name="password">
+            {errorMsg => <div className="text-red-600">{errorMsg}</div>}
+            </ErrorMessage>
           <div className="mt-2">
             <Field
-              id="password"
               name="password"
               type="password"
+              placeholder="Password"
               autoComplete="current-password"
-              required
               className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
@@ -68,7 +62,7 @@ const LoginForm = () => {
         <div>
           <button
             type="submit"
-            className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="transition-all flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Sign in
           </button>
