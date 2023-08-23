@@ -7,7 +7,6 @@ import { useAuth } from 'hooks';
 import { RestrictedRoute } from './RestrictedRoute/RestrictedRoute';
 import { PrivatRoute } from './PrivatRoute/PrivatRoute';
 
-
 const HomePage = lazy(() => import('../pages/HomePage'));
 const RegistrPage = lazy(() => import('../pages/RegistrPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -46,7 +45,6 @@ export const App = () => {
         />
         <Route path="*" element={<NotFound />} />
       </Route>
-      </Routes>
-      
+    </Routes>
   );
 };

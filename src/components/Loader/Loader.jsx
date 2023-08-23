@@ -1,8 +1,8 @@
-import React from "react"
-import ContentLoader from "react-content-loader"
+import React from 'react';
+import ContentLoader from 'react-content-loader';
 
-const MyLoader = (props) => (
-  <ContentLoader 
+const MyLoader = props => (
+  <ContentLoader
     speed={2}
     width={476}
     height={124}
@@ -12,9 +12,8 @@ const MyLoader = (props) => (
     foregroundColor="#ecebeb"
     {...props}
   >
-    <rect x="0" y="0" rx="10" ry="10" width="250" height="60" /> 
-
+    <rect x="0" y="0" rx="10" ry="10" width="250" height="60" />
   </ContentLoader>
-)
+);
 
-export default MyLoader
+export default MyLoader;

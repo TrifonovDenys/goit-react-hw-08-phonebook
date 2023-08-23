@@ -4,7 +4,7 @@ import { useAuth } from 'hooks';
 
 const Navigation = () => {
   const { isLoggedIn } = useAuth();
-  
+
   return (
     <>
       <div className="flex items-center max-w-5xl mx-auto my-0">

@@ -1,21 +1,18 @@
 import { logIn } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as yup from 'yup'
+import * as yup from 'yup';
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
-  password: yup.string().min(6).max(20).required(), 
-})
+  password: yup.string().min(6).max(20).required(),
+});
 
 const LoginForm = () => {
-
   const dispatch = useDispatch();
-  
-  const handleSubmit = (v,a) => {
-    dispatch(
-      logIn(v)
-    );
+
+  const handleSubmit = (v, a) => {
+    dispatch(logIn(v));
     // a.resetForm()
   };
 
@@ -25,10 +22,7 @@ const LoginForm = () => {
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
-      
-      <Form
-        className="space-y-6"
-      >
+      <Form className="space-y-6">
         <div>
           <ErrorMessage name="email">
             {errorMsg => <div className="text-red-600">{errorMsg}</div>}
@@ -45,9 +39,9 @@ const LoginForm = () => {
         </div>
 
         <div>
-            <ErrorMessage name="password">
+          <ErrorMessage name="password">
             {errorMsg => <div className="text-red-600">{errorMsg}</div>}
-            </ErrorMessage>
+          </ErrorMessage>
           <div className="mt-2">
             <Field
               name="password"
