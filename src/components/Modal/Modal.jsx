@@ -17,9 +17,9 @@ const Modal = () => {
   return createPortal(
     <div className={css.Modal_backdrop} onClick={hendleCloseModal}>
       <div className={css.Modal_content}>
-        <div>
+        <div className='absolute top-4 right-4'>
           <button
-            className="transition-all absolute right-[3%] rounded-md border-solid border-2 border-gray-600 bg-grey-600 py-1 px-1 hover:bg-gray-600 text-black hover:text-white"
+            className="transition-all rounded-md border-solid border-2 border-gray-600 bg-grey-600 py-1 px-1 hover:bg-gray-600 text-black hover:text-white"
             onClick={() => {
               dispatch(closeModal());
             }}
