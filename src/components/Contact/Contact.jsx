@@ -1,26 +1,48 @@
 import { deleteContact } from 'redux/contacts/operations';
 import css from '../ContactList/ContactList.module.css';
 import { useDispatch } from 'react-redux';
-import { RxCross2 } from 'react-icons/rx';
+import { RxCross2, RxUpdate } from 'react-icons/rx';
+import { BsFillPhoneFill, BsFillPersonFill } from 'react-icons/bs';
+import { openModal } from 'redux/contacts/modalSlice';
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(contact.id));
+
+  const hendleOpenModal = () => {
+    dispatch(openModal());
+  };
+
   return (
     <li
-      className="min-w-[24.2%] transition-all flex items-center justify-between border-solid border-2 border-indigo-600 p-2 rounded-md bg-white hover:shadow-md"
+      className="min-w-[49.5%] transition-all flex items-center justify-between border-solid border-2 border-indigo-600 p-2 rounded-md bg-white hover:shadow-md"
       key={contact.id}
     >
-      <div>
-        <p className={css.text}>Name: {contact.name}</p>
-        <span>Number: {contact.number}</span>
+      <div className={css.text}>
+        <div className="flex items-center">
+          <BsFillPersonFill className="fill-indigo-600" />
+          <span className="ml-2 "> Name: {contact.name}</span>
+        </div>
+
+        <div className="flex items-center">
+          <BsFillPhoneFill className="fill-indigo-600" />
+          <span className="ml-2 ">Number: {contact.number}</span>
+        </div>
       </div>
-      <button
-        className="transition-all rounded-md border-solid border-2 border-indigo-600 bg-indigo-600 py-1 px-1 hover:bg-indigo-100 text-white hover:text-black"
-        onClick={handleDelete}
-      >
-        <RxCross2 />
-      </button>
+      <div>
+        <button
+          className="mr-2 transition-all rounded-md border-solid border-2 border-indigo-600 bg-indigo-600 py-1 px-1 hover:bg-indigo-100 text-white hover:text-black"
+          onClick={hendleOpenModal}
+        >
+          <RxUpdate />
+        </button>
+        <button
+          className="transition-all rounded-md border-solid border-2 border-indigo-600 bg-indigo-600 py-1 px-1 hover:bg-indigo-100 text-white hover:text-black"
+          onClick={handleDelete}
+        >
+          <RxCross2 />
+        </button>
+      </div>
     </li>
   );
 };
