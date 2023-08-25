@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact, updateContact } from './operations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  updateContact,
+} from './operations';
 
 const hendlePending = state => {
   state.contacts.isLoading = true;
@@ -21,7 +26,7 @@ const contactSlice = createSlice({
   },
   reducers: {
     getUpdatetContactId: (state, action) => {
-      state.contacts.updatedContact = action.payload
+      state.contacts.updatedContact = action.payload;
     },
   },
   extraReducers: {
@@ -59,10 +64,10 @@ const contactSlice = createSlice({
       const index = state.contacts.items.findIndex(
         contact => contact.id === action.payload.id
       );
-      state.contacts.items.splice(index, 1, state.contacts.updateContact);
+      state.contacts.items.splice(index, 1, action.payload);
     },
   },
 });
 
-export const {getUpdatetContactId} = contactSlice.actions
+export const { getUpdatetContactId } = contactSlice.actions;
 export const contactReducer = contactSlice.reducer;
