@@ -1,6 +1,7 @@
 import { Formik, Field, Form } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import MaskedInput from 'react-text-mask';
+import { closeModal } from 'redux/contacts/modalSlice';
 import { updateContact } from 'redux/contacts/operations';
 import { getupdatedContact } from 'redux/contacts/selectors';
 import * as yup from 'yup';
@@ -33,11 +34,11 @@ const phoneNumberMask = [
 
 const ContactUpdate = () => {
   const dispatch = useDispatch();
-  const updateId = useSelector(getupdatedContact);
-
+  const { id, name, number } = useSelector(getupdatedContact);
   const handleSubmit = (value, { resetForm }) => {
-    dispatch(updateContact({ updateId, value }));
+    dispatch(updateContact({ id, value }));
     resetForm();
+    dispatch(closeModal());
   };
 
   return (
@@ -48,8 +49,9 @@ const ContactUpdate = () => {
     >
       <Form className="flex flex-wrap items-center justify-between gap-x-3">
         <div className="w-[48%]">
+          <label htmlFor="nameu">{name}</label>
           <Field
-            id="name"
+            id="nameu"
             name="name"
             type="text"
             autoComplete="name"
@@ -60,10 +62,12 @@ const ContactUpdate = () => {
         </div>
 
         <div className="w-[48%]">
+          <label htmlFor="numberu">{number}</label>
           <Field name="number" autoComplete="number" required>
             {({ field }) => (
               <MaskedInput
                 {...field}
+                id="numberu"
                 type="text"
                 name="number"
                 mask={phoneNumberMask}

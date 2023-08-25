@@ -1,6 +1,6 @@
 import { deleteContact } from 'redux/contacts/operations';
 import css from '../ContactList/ContactList.module.css';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { RxCross2, RxUpdate } from 'react-icons/rx';
 import { BsFillPhoneFill, BsFillPersonFill } from 'react-icons/bs';
 import { openModal } from 'redux/contacts/modalSlice';
@@ -12,8 +12,7 @@ const Contact = ({ contact }) => {
 
   const hendleOpenModal = () => {
     dispatch(openModal());
-    dispatch(getUpdatetContactId(contact.id))
-    
+    dispatch(getUpdatetContactId(contact));
   };
 
   return (
