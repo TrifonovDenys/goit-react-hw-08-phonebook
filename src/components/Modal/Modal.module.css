@@ -8,12 +8,13 @@
 }
 .Modal_content{
   position: absolute;
+  
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   min-height: 200px;
-  min-width: 600px;
-  /* width: 100%; */
+  width: 600px;
+  max-width: 95%;
   padding: 80px 32px;
   background-color: #fff;
   border-radius: 3px;

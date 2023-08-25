@@ -47,7 +47,7 @@ const ContactUpdate = () => {
       validationSchema={schema}
     >
       <Form className="flex flex-wrap items-end justify-between gap-x-3">
-        <div className="w-[48%] relative">
+        <div className="w-[100%] lg:w-[48%] relative mb-2 lg:mb-0">
           <ErrorMessage name="name">
             {errorMsg => <div className="text-red-600 text-xs">{errorMsg}</div>}
           </ErrorMessage>
@@ -62,7 +62,7 @@ const ContactUpdate = () => {
           />
         </div>
 
-        <div className="w-[48%] relative">
+        <div className="w-[100%] lg:w-[48%] relative">
           <ErrorMessage name="number">
             {errorMsg => <div className="text-red-600 text-xs">{errorMsg}</div>}
           </ErrorMessage>

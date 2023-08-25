@@ -25,6 +25,7 @@ const ContactsPage = () => {
       <Filter />
       <br />
       {isLoading && !error ? <MyLoader /> : <ContactList />}
+      {/* <MyLoader /> */}
     </>
   );
 };

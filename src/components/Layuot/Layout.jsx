@@ -10,7 +10,7 @@ const Layout = () => {
         <AppBar />
       </header>
 
-      <main className="max-w-5xl mx-auto my-0 px-4">
+      <main className="max-w-5xl mx-auto my-0 px-4 py-2">
         <Suspense
           fallback={
             <Blocks
