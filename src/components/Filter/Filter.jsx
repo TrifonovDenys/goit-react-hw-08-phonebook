@@ -27,9 +27,9 @@ const Filter = () => {
   };
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="lg:flex items-center max-w-lg lg:max-w-[100%] justify-center justify-between mx-auto my-0">
       <Formik initialValues={{ email: '', password: '' }}>
-        <Form className="w-1/2">
+        <Form className="w-[100%] lg:w-1/2 ">
           <div className="relative">
             <label className="" htmlFor="filter"></label>
             <Field
@@ -49,7 +49,7 @@ const Filter = () => {
           </div>
         </Form>
       </Formik>
-      <div className="flex items-center">
+      <div className="flex items-center mt-3 lg:mt-0">
         <input
           id="checkbox"
           type="checkbox"

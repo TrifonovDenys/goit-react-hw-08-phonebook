@@ -6,11 +6,11 @@ import { Blocks } from 'react-loader-spinner';
 const Layout = () => {
   return (
     <>
-      <header className="bg-white">
+      <header className="bg-white px-4">
         <AppBar />
       </header>
 
-      <main className="max-w-5xl mx-auto my-0">
+      <main className="max-w-5xl mx-auto my-0 px-4">
         <Suspense
           fallback={
             <Blocks
@@ -18,7 +18,7 @@ const Layout = () => {
               height="80"
               width="80"
               ariaLabel="blocks-loading"
-              wrapperStyle={{ height: '80vh', margin: 'auto'}}
+              wrapperStyle={{ height: '80vh', margin: 'auto' }}
               wrapperClass="blocks-wrapper"
             />
           }

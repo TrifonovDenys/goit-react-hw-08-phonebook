@@ -43,7 +43,7 @@ const ContactList = () => {
   }
 
   return (
-    <ul className="flex flex-wrap basis-[50%] gap-y-3.5 gap-x-2.5">
+    <ul className="flex flex-wrap basis-[50%] gap-y-3.5  justify-between">
       {filteredContacts &&
         filteredContacts.map(contact => (
           <Contact key={contact.id} contact={contact} />

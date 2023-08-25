@@ -59,13 +59,9 @@ const ContactForm = () => {
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
-        <Form className="flex items-end max-w-lg gap-x-3 py-6">
+        <Form className="lg:flex flex-wrap items-end max-w-lg gap-x-3 py-6 mx-auto my-0 lg:mx-0 lg:my-0">
           <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            ></label>
-            <div className="mt-2">
+            <div className="mb-3 lg:mb-0">
               <Field
                 id="name"
                 name="name"
@@ -79,11 +75,7 @@ const ContactForm = () => {
           </div>
 
           <div>
-            <label
-              htmlFor="number"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            ></label>
-            <div className="mt-2">
+            <div className="mb-3 lg:mb-0">
               <Field name="number" autoComplete="number" required>
                 {({ field }) => (
                   <MaskedInput

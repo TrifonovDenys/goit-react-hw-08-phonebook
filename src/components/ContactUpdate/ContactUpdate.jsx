@@ -1,4 +1,4 @@
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import MaskedInput from 'react-text-mask';
 import { closeModal } from 'redux/contacts/modalSlice';
@@ -7,7 +7,7 @@ import { getupdatedContact } from 'redux/contacts/selectors';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  name: yup.string().required(),
+  name: yup.string().min(3).max(30).required(),
   number: yup.string().required(),
 });
 
@@ -40,38 +40,41 @@ const ContactUpdate = () => {
     resetForm();
     dispatch(closeModal());
   };
-
   return (
     <Formik
       initialValues={{ name: '', number: '' }}
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
-      <Form className="flex flex-wrap items-center justify-between gap-x-3">
-        <div className="w-[48%]">
-          <label htmlFor="nameu">{name}</label>
+      <Form className="flex flex-wrap items-end justify-between gap-x-3">
+        <div className="w-[48%] relative">
+          <ErrorMessage name="name">
+            {errorMsg => <div className="text-red-600 text-xs">{errorMsg}</div>}
+          </ErrorMessage>
           <Field
-            id="nameu"
+            id="name"
             name="name"
             type="text"
             autoComplete="name"
-            placeholder="Name"
+            placeholder={name}
             required
             className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           />
         </div>
 
-        <div className="w-[48%]">
-          <label htmlFor="numberu">{number}</label>
+        <div className="w-[48%] relative">
+          <ErrorMessage name="number">
+            {errorMsg => <div className="text-red-600 text-xs">{errorMsg}</div>}
+          </ErrorMessage>
           <Field name="number" autoComplete="number" required>
             {({ field }) => (
               <MaskedInput
                 {...field}
-                id="numberu"
+                id="number"
                 type="text"
                 name="number"
                 mask={phoneNumberMask}
-                placeholder="Number: +38 ( )"
+                placeholder={number}
                 className="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             )}

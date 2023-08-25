@@ -17,7 +17,7 @@ const Contact = ({ contact }) => {
 
   return (
     <li
-      className="min-w-[49.5%] transition-all flex items-center justify-between border-solid border-2 border-indigo-600 p-2 rounded-md bg-white hover:shadow-md"
+      className="w-[100%] lg:w-[49.5%] transition-all flex items-center justify-between border-solid border-2 border-indigo-600 p-2 rounded-md bg-white hover:shadow-md"
       key={contact.id}
     >
       <div className={css.text}>
